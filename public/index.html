@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Playlist Creator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Spotify Playlist Creator</h1>
+    
+    <div id="login">
+      <h2>Please log in with your Spotify account</h2>
+      <a href="/login" class="btn">Log in with Spotify</a>
+    </div>
+    
+    <div id="loggedin" style="display:none">
+      <h2>Create a Playlist</h2>
+        
+      <form id="create-playlist-form">  
+        <div class="form-group">
+          <label for="lastfm-user-id">Last.fm Username:</label>
+          <input type="text" id="lastfm-user-id" required>
+        </div>
+
+        <div class="form-group">
+          <label for="playlist-name">Playlist Name:</label>
+          <input type="text" id="playlist-name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="playlist-description">Description:</label>
+          <input type="text" id="playlist-description">
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="is-public" checked>
+            Make playlist public
+          </label>
+        </div>
+
+        <button type="submit" class="btn">Create Playlist from Last.fm</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>

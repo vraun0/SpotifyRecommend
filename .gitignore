@@ -1,0 +1,13 @@
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# OS / Editor files
+.DS_Store
+*.log
+
+# Optional: add build artifacts if using any
+dist/
+
