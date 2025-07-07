@@ -1,6 +1,5 @@
 async function createPlaylist(accessToken, userId, playlistName, isPublic = true, description = '') {
   try {
-    // Create an empty playlist
     const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
       method: 'POST',
       headers: {
@@ -27,7 +26,6 @@ async function createPlaylist(accessToken, userId, playlistName, isPublic = true
 
 async function addTracksToPlaylist(accessToken, playlistId, trackUris) {
   try {
-    // Add tracks to the playlist
     const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
       method: 'POST',
       headers: {
