@@ -1,9 +1,10 @@
 const express = require('express');
 const crypto = require('crypto');
 const querystring = require('querystring');
+const dotenv = require('dotenv').config();
 
-const client_id = "5af3d7ee43044edca388c52a4c253ff2";
-const client_secret = "c35da5c402c44bcd9a21e451e6c5c39e" 
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const redirect_uri = 'http://127.0.0.1:8888/callback';
 const stateKey = 'spotify_auth_state';
 
@@ -69,13 +70,11 @@ function setupAuthRoutes(app) {
         const access_token = body.access_token;
         const refresh_token = body.refresh_token;
         
-        // Store tokens in session or pass to frontend
         if (req.session) {
           req.session.access_token = access_token;
           req.session.refresh_token = refresh_token;
         }
         
-        // Get user profile
         const userResponse = await fetch('https://api.spotify.com/v1/me', {
           headers: { 'Authorization': 'Bearer ' + access_token }
         });
@@ -120,7 +119,6 @@ function setupAuthRoutes(app) {
       
       const body = await response.json();
       const access_token = body.access_token;
-      // Note: Spotify might not always return a new refresh token
       const new_refresh_token = body.refresh_token || refresh_token;
       
       res.send({
